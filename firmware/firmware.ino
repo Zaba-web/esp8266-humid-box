@@ -12,7 +12,9 @@ String boxName = "SHENG PUERH";
 const char* WIFI_SSID = "TOTOLINK_151";
 const char* PASSWORD = "m1n2b3v4";
 const int FAN_PIN = 14;
-const int VENTILATION_TIME = 30 * 1000;
+
+int FUN_START_PERIOD = (2 * 60 * 60) * 1000;
+int VENTILATION_TIME = 30 * 1000;
 
 unsigned long lastTime = 0;
 unsigned long enabledTime = 0;
@@ -81,7 +83,6 @@ void setup(void){
   // SETUP FAN RELAY
   pinMode(FAN_PIN, OUTPUT);
 
-
   // TEST FAN
   enableFan();
   delay(2000);
@@ -104,7 +105,7 @@ void handleVentilation() {
     return;
   }
   
-  if (millis() >= lastTime + (unsigned long) (30 * 60) * 1000) {
+  if (millis() >= lastTime + (unsigned long) FUN_START_PERIOD) {
     lastTime = millis();
     enableFan();
     fanEnabled = true;
