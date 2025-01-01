@@ -6,11 +6,10 @@
 
     const min = range[0] || 0
     const max = range[1] || 0
+    let status = "BAD";
     $: currentPercent = value / (max / 100)
-    $: status = "BAD";
-    $: updateStatus();
-
-    function updateStatus() {
+    $: {
+        console.log("update")
         // Stupid shit but it will do for now
         if (value >= status_ranges.BAD && value < status_ranges.OK) {
             status = "BAD";

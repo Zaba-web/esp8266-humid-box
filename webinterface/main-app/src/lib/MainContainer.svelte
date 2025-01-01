@@ -13,11 +13,9 @@
         humidity = parseFloat(await (await getHumidity()).text());
     }
 
-    import { onMount } from 'svelte';
-
-    onMount(() => {
-        updateData();
-    });
+    setInterval(() => {
+        updateData()
+    }, 2000);
 </script>
 
 <div class="main-container">
