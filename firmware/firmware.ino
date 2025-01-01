@@ -97,7 +97,7 @@ void loop(void)
 
 void handleVentilation() {
   if (fanEnabled) {
-    if (millis() >= enabledTime + VENTILATION_TIME) {
+    if (millis() >= enabledTime + (unsigned long) VENTILATION_TIME) {
       fanEnabled = false;
       disableFan();
     }
